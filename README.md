@@ -11,9 +11,9 @@ Santiago Ulloa(@sulloa13)
 * PostgreSQL
 * Docker
 
-![login page](/Capstone Project/IMG_7982.JPG)
-![shopping list](/Capstone Project/IMG_1177.JPG)
-![shopping list 2](/Capstone Project/IMG_0057.JPG)
+![login page](/IMG_7982.JPG)
+![shopping list](/IMG_1177.JPG)
+![shopping list 2](/IMG_0057.JPG)
 
 ## Completions
 
