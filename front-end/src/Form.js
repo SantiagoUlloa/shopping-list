@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Form.css'
+import Icon from '@material-ui/core/Icon';
+import { spacing } from '@material-ui/system';
 
 
 class Form extends Component {
@@ -44,11 +46,11 @@ class Form extends Component {
 					onChange={this.handleChange}
 				/>
 
-				<button className="btn btn-primary btn-sm"
+				<Icon className="add-icon" fontSize="large"
 					onClick={this.handleNewTodoAddition}
 				>
-					+
-				</button>
+					add_circle
+				</Icon>
 			</div>
 		);
 	}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Todo.css'
+import Icon from '@material-ui/core/Icon';
 
 const Todo = ({todo, remove}) => {
 	// single todo
@@ -11,7 +12,7 @@ const Todo = ({todo, remove}) => {
 				onClick={()=> {
 					remove(todo.id)
 				}}>
-				<button class="btn btn-danger btn-sm">x</button>
+				<Icon className="delete-icon">delete</Icon>
 			</span>
 		</p>
 	);

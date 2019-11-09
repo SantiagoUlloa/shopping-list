@@ -81,8 +81,7 @@ class Container extends Component {
 			}
 
 		} else {
-			 console.log("App will not remember todos created as LocalStorage Is Not Available",
-							 "color: hotpink; background: #333; font-size: x-large;font-family: Courier;");
+			 console.log("App will not remember todos created as LocalStorage Is Not Available");
 			window.id = 0;
 		}
 	}
