@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cafc9a5f-9d04-4db3-b22a-cc7a9c0feca2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/SecurityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/SecurityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/TodoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/TodoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/model/Todos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/model/Todos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/repository/TodosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/repository/TodosRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/TodosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/TodosService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/TodosServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/TodosServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-gateway/src/main/java/com/example/zuulgateway/ZuulGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/zuul-gateway/src/main/java/com/example/zuulgateway/ZuulGatewayApplication.java" afterDir="false" />
-    </list>
+    <list default="true" id="cafc9a5f-9d04-4db3-b22a-cc7a9c0feca2" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +74,7 @@
       <workItem from="1573245245185" duration="2505000" />
       <workItem from="1573327495255" duration="603000" />
       <workItem from="1573331522187" duration="48000" />
-      <workItem from="1573359144290" duration="5257000" />
+      <workItem from="1573359144290" duration="6285000" />
     </task>
     <servers />
   </component>
