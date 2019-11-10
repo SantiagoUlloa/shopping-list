@@ -1,14 +1,17 @@
 package com.example.shoppingapi.controller;
 
 import com.example.shoppingapi.model.JwtResponse;
+import com.example.shoppingapi.model.Todos;
 import com.example.shoppingapi.model.User;
 import com.example.shoppingapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping
 public class UserController {
 
     @Autowired
@@ -42,5 +45,17 @@ public class UserController {
         return "Hello World!!";
     }
 
+    @PutMapping("add/{username}/{todo_id}/")
+    public Iterable<Todos> addTodo(@PathVariable String username, @PathVariable Long todo_id){
+        return userService.addTodosToUserList(username, todo_id);
+    }
+
+    @DeleteMapping("/delete/{username}/{todo_id}/")
+    public Iterable<Todos> deleteTodosFromUserList(@PathVariable String username, @PathVariable Long todo_id) {
+        return userService.deleteTodosFromUserList(username, todo_id);
+    }
+
+    @GetMapping("get/listUserTodos/")
+    public List<Todos> listUserTodoList() {return userService.listUserTodoList(); }
 
 }

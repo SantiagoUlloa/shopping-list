@@ -23,6 +23,35 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH,
+                    CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "user_todolist",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = @JoinColumn(name = "todo_id"))
+    private List<Todos> todos;
+
+    public List<Todos> addTodoToList (Todos todo) {
+        if(todos == null)
+            todos = new ArrayList<>();
+        todos.add(todo);
+
+        return todos;
+    }
+
+    public List<Todos> deleteTodosFromList (Todos todo) {
+        try {
+            todos.remove(todo);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return todos;
+    }
+
+    public List<Todos> getTodos() {return todos;}
+
+    public void setTodos(List<Todos> todos) {this.todos = todos;}
+
     public User() {}
 
     public Long getId() {

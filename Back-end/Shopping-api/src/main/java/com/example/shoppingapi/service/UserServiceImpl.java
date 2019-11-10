@@ -1,26 +1,47 @@
 package com.example.shoppingapi.service;
 
 import com.example.shoppingapi.config.JwtUtil;
+import com.example.shoppingapi.controller.SecurityController;
+import com.example.shoppingapi.model.Todos;
 import com.example.shoppingapi.model.User;
+import com.example.shoppingapi.repository.TodosRepository;
 import com.example.shoppingapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements com.example.shoppingapi.service.UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
 
     @Autowired
+    TodosRepository todosRepository;
+
+    @Autowired
+    TodosService todosService;
+
+    @Autowired
     JwtUtil jwtUtil;
+
+    @Autowired
+    SecurityController securityController;
+
+    @Autowired
+    @Qualifier("encoder")
+    PasswordEncoder bCryptPasswordEncoder;
+
+
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -81,5 +102,33 @@ public class UserServiceImpl implements com.example.shoppingapi.service.UserServ
 //        userRepository.deleteById(userId);
 //        return HttpStatus.OK;
 //    }
+
+
+    @Override
+    public Iterable<Todos> addTodosToUserList(String username, Long todo_id) {
+        Todos todo = todosRepository.findById(todo_id).get();
+        User user = getUser(username);
+        user.addTodoToList(todo);
+
+        todosRepository.save(todo);
+        return user.getTodos();
+    }
+
+    public Iterable<Todos> deleteTodosFromUserList(String username, Long todo_id) {
+        Todos todo = todosRepository.findById(todo_id).get();
+        User user = getUser(username);
+        user.deleteTodosFromList(todo);
+
+        userRepository.save(user);
+        return user.getTodos();
+    }
+
+    @Override
+    public List<Todos> listUserTodoList() {
+
+        User user = userRepository.findByUsername(securityController.getCurrentUserName());
+        return user.getTodos();
+    }
+
 
 }

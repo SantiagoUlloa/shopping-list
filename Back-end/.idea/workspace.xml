@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c286d591-c137-4d4c-9593-085c17e06e5c" name="Default Changelist" comment="" />
+    <list default="true" id="cafc9a5f-9d04-4db3-b22a-cc7a9c0feca2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/SecurityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/SecurityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/TodoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/TodoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/model/Todos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/model/Todos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/repository/TodosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/repository/TodosRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/TodosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/TodosService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/TodosServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/TodosServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping-api/src/main/java/com/example/shoppingapi/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zuul-gateway/src/main/java/com/example/zuulgateway/ZuulGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/zuul-gateway/src/main/java/com/example/zuulgateway/ZuulGatewayApplication.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,40 +28,34 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
         <option name="lookForNested" value="true" />
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1TA3D3qd3l4hU1U3z2GGA1hGiF5" />
+  <component name="ProjectId" id="1TLhNWpFf2F5zCkdB63CuLFhUdU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/zuul-gateway/src/main/resources" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.eurekaserver" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/zuul-gateway/src/main/resources" />
-      <recent name="$PROJECT_DIR$/eureka-server/src/main/resources" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -58,38 +69,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DemoApplication">
-    <configuration name="DemoApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eureka-server" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.eurekaserver.DemoApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DemoApplication (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shopping-list" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.shoppinglist.DemoApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DemoApplication (3)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="zuul-gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.zuulgateway.ZuulGatewayApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="user" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.user.DemoApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eureka-server" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.eurekaserver.EurekaServerApplication" />
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shopping-api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.shoppingapi.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -100,17 +83,32 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c286d591-c137-4d4c-9593-085c17e06e5c" name="Default Changelist" comment="" />
-      <created>1572888949221</created>
+      <changelist id="cafc9a5f-9d04-4db3-b22a-cc7a9c0feca2" name="Default Changelist" comment="" />
+      <created>1573245243955</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1572888949221</updated>
-      <workItem from="1572888950530" duration="702000" />
-      <workItem from="1572889682912" duration="2319000" />
+      <updated>1573245243955</updated>
+      <workItem from="1573245245185" duration="2505000" />
+      <workItem from="1573327495255" duration="603000" />
+      <workItem from="1573331522187" duration="48000" />
+      <workItem from="1573359144290" duration="5257000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
