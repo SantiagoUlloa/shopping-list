@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Form.css'
 import Icon from '@material-ui/core/Icon';
 import { spacing } from '@material-ui/system';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
 
 
 class Form extends Component {
@@ -32,11 +34,8 @@ class Form extends Component {
 
 	render() {
 		return (
-			// ref should be passed a callback
-			// with underlying dom element as its
-			// argument to get its reference
 			<div id="form">
-				<input
+				<input className="item-input"
 					ref={node => {
 						this.input = node;
 					}}
@@ -46,11 +45,11 @@ class Form extends Component {
 					onChange={this.handleChange}
 				/>
 
-				<Icon className="add-icon" fontSize="large"
+				<AddShoppingCartIcon className="add-icon" fontSize="large"
 					onClick={this.handleNewTodoAddition}
 				>
 					add_circle
-				</Icon>
+				</AddShoppingCartIcon>
 			</div>
 		);
 	}

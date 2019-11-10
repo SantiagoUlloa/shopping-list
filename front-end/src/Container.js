@@ -3,21 +3,37 @@ import Title from './Title';
 import Form from './Form';
 import List from './List';
 import Footer from './Footer';
+import Todo from './Todo';
 import './Container.css'
+import BackgroundImagePage from './BackgroundImagePage'
+import './BackgroundImagePage.css'
 
 // Contaner Component
 // Todo Id
 class Container extends Component {
 	constructor(props) {
 		super(props);
-		// data for introduction to app
-		// for new users
+
+		const introData = [
+			{
+				id: -3,
+				value: "Eggs"
+			},
+			{
+				id: -2,
+				value: "Cereal"
+			},
+			{
+				id: -1,
+				value: "Milk"
+			}
+		];
 
 		const localData = localStorage.todos && JSON.parse(localStorage.todos);
 
 		this.state = {
-			data: localData
-		};
+				data: localData || introData
+			};
 
 		// binding methods
 		this.addTodo = this.addTodo.bind(this);
