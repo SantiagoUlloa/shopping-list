@@ -1,23 +1,26 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 import 'mdbreact/dist/css/mdb.css'
 
-const Signin = () => {
+const Signin = (props) => {
   return (
     <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
-          <form>
+        <MDBCard>
+          <form onSubmit = {props.submitLogin}>
             <p className="h5 text-center mb-4">Sign in</p>
             <div className="grey-text">
               <MDBInput
-                label="Type your email"
+                label="Type your username"
                 icon="envelope"
                 group
-                type="email"
+                type="username"
                 validate
                 error="wrong"
                 success="right"
+                value={props.username}
+                onChange={props.handleUsernameChange}
               />
               <MDBInput
                 label="Type your password"
@@ -25,12 +28,15 @@ const Signin = () => {
                 group
                 type="password"
                 validate
+                value={props.password}
+                onChange={props.handlePasswordChange}
               />
             </div>
             <div className="text-center">
-              <MDBBtn>Login</MDBBtn>
+              <MDBInput type="submit" value="submit"/>
             </div>
           </form>
+          </MDBCard>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
