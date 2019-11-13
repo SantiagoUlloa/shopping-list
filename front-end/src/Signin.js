@@ -1,10 +1,11 @@
 import React from "react";
 import { MDBContainer, MDBCard, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import 'mdbreact/dist/css/mdb.css'
+import './Signin.css'
 
 const Signin = (props) => {
   return (
-    <MDBContainer>
+    <MDBContainer className="signin-container justify-content-center">
       <MDBRow>
         <MDBCol md="6">
         <MDBCard>
@@ -13,9 +14,9 @@ const Signin = (props) => {
             <div className="grey-text">
               <MDBInput
                 label="Type your username"
-                icon="envelope"
+                icon="user"
                 group
-                type="username"
+                type="text"
                 validate
                 error="wrong"
                 success="right"

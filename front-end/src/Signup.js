@@ -1,10 +1,11 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
-import 'mdbreact/dist/css/mdb.css'
+import 'mdbreact/dist/css/mdb.css';
+import './Signup.css';
 
 const Signup = (props) => {
   return (
-    <MDBContainer>
+    <MDBContainer className="signup-container justify-content-center">
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>

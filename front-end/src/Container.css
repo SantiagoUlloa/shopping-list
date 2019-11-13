@@ -3,7 +3,8 @@
   background-color: white;
   left: 0;
   right: 0;
-  margin: auto;
-  width:300px;
+  margin: 0 auto;
+  width:320px;
+  padding: 0 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

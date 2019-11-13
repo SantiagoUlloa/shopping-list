@@ -18,7 +18,8 @@ class App extends Component {
       token: "",
       isLoggedIn: false,
       logInClicked: false,
-      RegisterClicked: false
+      registerClicked: false,
+      logoutClicked:false
     }
 
   }
@@ -95,13 +96,18 @@ class App extends Component {
     }
 
     handleRegisterButtonClicked = (e) => {
-      this.setState({RegisterClicked: !this.state.RegisterClicked})
+      this.setState({registerClicked: !this.state.registerClicked})
+    }
+
+    handleLogout= (e) => {
+      this.setState({isLoggedIn: false})
+
     }
 
 render(){
   return(
     <div className="App">
-    <Button className="login-button" color="primary" onClick={this.handleLogInButtonClicked}>log in</Button>
+    <Button className="login-button" color="primary" onClick={this.handleLogInButtonClicked}>Log In</Button>
       {this.state.logInClicked ? <Signin
         submitLogin = {this.submitLogin}
         handleUsernameChange = {this.handleUsernameChange}
@@ -110,13 +116,14 @@ render(){
         password = {this.state.password}
       /> : ''}
       <Button className="register-button" color="primary" onClick={this.handleRegisterButtonClicked}>Register</Button>
-      {this.state.RegisterClicked ? <Signup
+      {this.state.registerClicked ? <Signup
         submitRegister = {this.submitRegister}
         handleUsernameChange = {this.handleUsernameChange}
         handlePasswordChange = {this.handlePasswordChange}
         username = {this.state.username}
         password = {this.state.password}
         /> : ''}
+        {this.state.isLoggedIn === true ? <Button className="log-out" onClick={this.handleLogout}>Log out</Button> : ''}
       <Container/>
       <BackgroundImagePage/>
     </div>

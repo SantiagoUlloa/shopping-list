@@ -1,5 +1,5 @@
 .bg {
-background-image: url("https://moneydotcomvip.files.wordpress.com/2016/05/jet-grocery-delivery.jpg");
+background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/grocery-cart.jpg');
 height: 100vh;
 background-position: center;
 background-repeat: no-repeat;
