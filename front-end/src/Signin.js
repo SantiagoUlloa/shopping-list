@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
+import { MDBContainer, MDBCard, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import 'mdbreact/dist/css/mdb.css'
 
 const Signin = (props) => {
@@ -33,7 +33,7 @@ const Signin = (props) => {
               />
             </div>
             <div className="text-center">
-              <MDBInput type="submit" value="submit"/>
+              <MDBBtn color="cyan" type="submit" value="submit">Login</MDBBtn>
             </div>
           </form>
           </MDBCard>
