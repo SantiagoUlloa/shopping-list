@@ -23,7 +23,7 @@ Santiago Ulloa (@sulloa13)
 |-----------|--------------|---------------|-----------------|----------------|--------------|
 | Worked on | Back-end     | Back-end      | Back-end        | Back-end       | Front-end    |
 
-| Day       | Monday 11/04 | Tuesday 11/05 | Wednesday 11/06 | Thursday 11/14 | Friday 11/08 |
+| Day       | Monday 11/11 | Tuesday 11/12 | Wednesday 11/13 | Thursday 11/14 | Friday 11/15 |
 |-----------|--------------|---------------|-----------------|----------------|--------------|
 | Worked on | Back-end     | Front-end     | Front-end       | Deployment     | Presentation |
 
