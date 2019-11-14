@@ -37,6 +37,6 @@ Encountered a factoryManager bean error that would not allow my microservices to
 ## User Stories
 our users are regular everyday people who go grocery shopping.
 
-* Karen, 24. As a User, I want an a grocery list app so that I can add all my  items and remove them once I have those items in my shopping cart.
-* Chad, 21. As a user, I want the ability to be able to log in if I want to.
-* Kyle, 27. As a User, I want an app that I can use before I go grocery shopping where I can save items.  
+* As a User, I want an a grocery list app so that I can add all my  items and remove them once I have those items in my shopping cart.
+* As a user, I want the ability to be able to log in if I want to.
+* As a User, I want an app that I can use before I go grocery shopping where I can save items.  
