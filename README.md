@@ -38,5 +38,5 @@ Encountered a factoryManager bean error that would not allow my microservices to
 our users are regular everyday people who go grocery shopping.
 
 * As a User, I want an a grocery list app so that I can add all my  items and remove them once I have those items in my shopping cart.
-* As a user, I want the ability to be able to log in if I want to.
+* As a guest, I want the ability to use the app without having to log in.
 * As a User, I want an app that I can use before I go grocery shopping where I can save items.  
