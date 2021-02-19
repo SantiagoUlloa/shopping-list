@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './Form.css'
-import Icon from '@material-ui/core/Icon';
-import { spacing } from '@material-ui/system';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 
@@ -48,7 +46,6 @@ class Form extends Component {
 				<AddShoppingCartIcon className="add-icon" fontSize="large"
 					onClick={this.handleNewTodoAddition}
 				>
-					add_circle
 				</AddShoppingCartIcon>
 			</div>
 		);

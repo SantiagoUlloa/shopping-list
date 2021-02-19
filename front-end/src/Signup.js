@@ -11,7 +11,7 @@ const Signup = (props) => {
           <MDBCard>
             <MDBCardBody>
               <form onSubmit = {props.submitRegister}>
-                <p className="h4 text-center py-4">Sign up</p>
+                <p className="h4 text-center py-4">Register</p>
                 <div className="grey-text">
                   <MDBInput
                     label="Username"

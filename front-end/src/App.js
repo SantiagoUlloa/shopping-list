@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import Container from './Container';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from "react-router-dom";
+
+//components
 import Signup from './Signup';
 import Signin from './Signin';
 import Button from '@material-ui/core/Button';
 import './App.css';
 import 'mdbreact/dist/css/mdb.css';
-import BackgroundImagePage from './BackgroundImagePage';
+import background from './assets/grocery-cart.jpg'
 
 
 class App extends Component {
@@ -43,7 +50,7 @@ class App extends Component {
         .then(res => {
           console.log(res, "I got a response!")
           this.setState({
-            username: "",
+            username: this.state.username,
             password: "",
             token: res.token,
             isLoggedIn: true
@@ -73,7 +80,7 @@ class App extends Component {
         .then(res => {
           console.log(res, "I got a response!")
           this.setState({
-            username: "",
+            username: this.state.username,
             password: "",
             token: res.token,
             isLoggedIn: true
@@ -100,32 +107,43 @@ class App extends Component {
     }
 
     handleLogout= (e) => {
-      this.setState({isLoggedIn: false})
+      this.setState({
+        isLoggedIn: false,
+        username: '',
+        password: '',
+        token: ''})
 
     }
 
 render(){
   return(
-    <div className="App">
-    <Button className="login-button" color="primary" onClick={this.handleLogInButtonClicked}>Log In</Button>
-      {this.state.logInClicked ? <Signin
+    
+    <div className="App" style={{ backgroundImage: `url(${background})`, height:"100vh",
+    backgroundPosition:"center", backgroundRepeat:"noRepeat", backgroundSize: "cover" }}>
+      <Router>
+      <Link className="home-link" to="/home">Home</Link>
+      <Link className="login-link" to="/login">Login</Link>
+      <Link className="register-link" to="/register">Register</Link>
+      <Route exact path="/home" component={Container} />
+      <Route path="/login" render={(props) => (
+      <Signin {...props} 
         submitLogin = {this.submitLogin}
         handleUsernameChange = {this.handleUsernameChange}
         handlePasswordChange = {this.handlePasswordChange}
         username = {this.state.username}
         password = {this.state.password}
-      /> : ''}
-      <Button className="register-button" color="primary" onClick={this.handleRegisterButtonClicked}>Register</Button>
-      {this.state.registerClicked ? <Signup
+/>)} />
+      <Route path="/register" render={(props) => (
+      <Signup {...props}
         submitRegister = {this.submitRegister}
         handleUsernameChange = {this.handleUsernameChange}
         handlePasswordChange = {this.handlePasswordChange}
         username = {this.state.username}
         password = {this.state.password}
-        /> : ''}
-        {this.state.isLoggedIn === true ? <Button className="log-out" onClick={this.handleLogout}>Log out</Button> : ''}
-      <Container/>
-      <BackgroundImagePage/>
+/>)}/>
+      {this.state.isLoggedIn === true ? <Button className="log-out" onClick={this.handleLogout}>Log out</Button> : ''}
+      {this.state.isLoggedIn === true ? <Button> Welcome {this.state.username}</Button>: ''}
+    </Router>
     </div>
   )
 }

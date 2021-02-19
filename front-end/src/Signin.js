@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBCard, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBCard, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCardBody } from 'mdbreact';
 import 'mdbreact/dist/css/mdb.css'
 import './Signin.css'
 
@@ -8,35 +8,40 @@ const Signin = (props) => {
     <MDBContainer className="signin-container justify-content-center">
       <MDBRow>
         <MDBCol md="6">
-        <MDBCard>
-          <form onSubmit = {props.submitLogin}>
-            <p className="h5 text-center mb-4">Sign in</p>
-            <div className="grey-text">
-              <MDBInput
-                label="Type your username"
-                icon="user"
-                group
-                type="text"
-                validate
-                error="wrong"
-                success="right"
-                value={props.username}
-                onChange={props.handleUsernameChange}
-              />
-              <MDBInput
-                label="Type your password"
-                icon="lock"
-                group
-                type="password"
-                validate
-                value={props.password}
-                onChange={props.handlePasswordChange}
-              />
-            </div>
-            <div className="text-center">
-              <MDBBtn color="cyan" type="submit" value="submit">Login</MDBBtn>
-            </div>
-          </form>
+          <MDBCard>
+            <MDBCardBody>
+              <form onSubmit = {props.submitLogin}>
+                <p className="h4 text-center py-4">Sign In</p>
+                <div className="grey-text">
+                  <MDBInput
+                    label="Username"
+                    icon="user"
+                    group
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                    value={props.username}
+                    onChange={props.handleUsernameChange}
+
+                  />
+                  <MDBInput
+                    label="Password"
+                    icon="lock"
+                    group
+                    type="password"
+                    validate
+                    value={props.password}
+                    onChange={props.handlePasswordChange}
+                  />
+                </div>
+                <div className="text-center py-4 mt-3">
+                  <MDBBtn color="cyan" value="submit" type="submit">
+                    Login
+                  </MDBBtn>
+                </div>
+              </form>
+            </MDBCardBody>
           </MDBCard>
         </MDBCol>
       </MDBRow>

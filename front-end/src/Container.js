@@ -5,8 +5,7 @@ import List from './List';
 import Footer from './Footer';
 import Todo from './Todo';
 import './Container.css'
-import BackgroundImagePage from './BackgroundImagePage'
-import './BackgroundImagePage.css'
+
 
 // Contaner Component
 // Todo Id
@@ -97,7 +96,7 @@ class Container extends Component {
 			}
 
 		} else {
-			 console.log("App will not remember todos created as LocalStorage Is Not Available");
+			 console.log("App will not remember todos created as LocalStorage is not available");
 			window.id = 0;
 		}
 	}

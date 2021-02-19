@@ -1,5 +1,12 @@
-.signin-container{
-left: 0;
-right: 0;
-margin: 0 auto;
+.signin-container {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.h5,
+.text-center,
+.mb-4 {
+  padding: 1.5rem 0;
 }
