@@ -1,13 +1,12 @@
 package com.example.shoppingapi.model;
 
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "todos")
-public class Todos {
+public class Todo {
     @Id
     @Column
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -15,6 +14,11 @@ public class Todos {
 
     @Column
     private String name;
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST,
+            CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Long getId() {
         return id;
@@ -30,6 +34,14 @@ public class Todos {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 
