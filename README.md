@@ -1,5 +1,7 @@
 # Cartit
-A shopping list app
+A groceries shopping list app
+
+<img width="1263" alt="Screenshot 2025-03-09 at 8 45 38 PM" src="https://github.com/user-attachments/assets/c3acb94d-0ba6-429f-a5e4-1dc860c236fe" />
 
 ## How to run this project locally:
 Clone the project, open it in your favorite IDE. cd into the backend folder and then Shopping-api, then run "docker compose up" in the terminal. Make sure you have docker installed on your computer and running. Also postgreSQL needs to be installed and running. And then cd into the frontend folder and cd into the src folder and run "npm i && npm run start" in the terminal. 
