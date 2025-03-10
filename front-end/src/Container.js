@@ -3,7 +3,7 @@ import Title from './Title';
 import Form from './Form';
 import List from './List';
 import Footer from './Footer';
-import Todo from './Todo';
+import { todoService } from './api/todoService';
 import './Container.css'
 
 
@@ -12,101 +12,106 @@ import './Container.css'
 class Container extends Component {
 	constructor(props) {
 		super(props);
-
-		const introData = [
-			{
-				id: -3,
-				value: "Eggs"
-			},
-			{
-				id: -2,
-				value: "Cereal"
-			},
-			{
-				id: -1,
-				value: "Milk"
-			}
-		];
-
-		const localData = localStorage.todos && JSON.parse(localStorage.todos);
-
 		this.state = {
-				data: localData || introData
-			};
-
-		// binding methods
-		this.addTodo = this.addTodo.bind(this);
-		this.removeTodo = this.removeTodo.bind(this);
-	}
-	// Handler to update localStorage
-	updateLocalStorage() {
-		if (typeof(Storage) !== "undefined")
-			localStorage.todos = JSON.stringify(this.state.data);
-	}
-	// Handler to add todo
-	addTodo(val) {
-		let id;
-		// if localStorage is available then increase localStorage count
-		// else use global window object's id variable
-		if (typeof(Storage) !== "undefined") {
-			id = Number(localStorage.count);
-			localStorage.count = Number(localStorage.count) + 1;
-		} else {
-			id = window.id++;
-		}
-
-		const todo = {
-			value: val,
-			id: id
+			data: [],
+			loading: true,
+			error: null,
+			tempError: null
 		};
 
-		this.state.data.push(todo);
-		// update state
-		this.setState({
-			data: this.state.data
-		}, () => {
-			// update localStorage
-			this.updateLocalStorage();
-		});
-	}
-	// Handler to remove todo
-	removeTodo(id) {
-		// filter out the todo that has to be removed
-		const list = this.state.data.filter(todo => {
-			if (todo.id !== id)
-				return todo;
-		});
-		// update state
-		this.setState({
-			data: list
-		}, () => {
-			// update localStorage
-			this.updateLocalStorage();
-		});
+		this.addTodo = this.addTodo.bind(this);
+		this.removeTodo = this.removeTodo.bind(this);
+		this.clearTempError = this.clearTempError.bind(this);
 	}
 
-	componentDidMount() {
-		localStorage.clear();
-		if (typeof(Storage) !== "undefined") {
-			if(!localStorage.todos) {
-				localStorage.todos = JSON.stringify(this.state.data);
-			}
-			if(!localStorage.count) {
-				localStorage.count = 0;
+	clearTempError() {
+		this.setState({ tempError: null });
+	}
+
+	setTempError(message) {
+		this.setState({ tempError: message });
+		setTimeout(this.clearTempError, 3000); // Clear after 3 seconds
+	}
+
+	async componentDidMount() {
+		try {
+			// Check if token exists
+			const token = localStorage.getItem('token');
+			if (!token) {
+				this.setState({ 
+					error: 'No authentication token found. Please log in.', 
+					loading: false 
+				});
+				return;
 			}
 
-		} else {
-			 console.log("App will not remember todos created as LocalStorage is not available");
-			window.id = 0;
+			const todos = await todoService.getTodos();
+			this.setState({ data: todos, loading: false });
+		} catch (error) {
+			console.error('Error details:', error);
+			const errorMessage = error.message || 'Failed to load todos';
+			this.setState({ 
+				error: `Error: ${errorMessage}. ${!localStorage.getItem('token') ? 'No token found.' : 'Token exists.'}`,
+				loading: false 
+			});
+		}
+	}
+
+	async addTodo(val) {
+		try {
+			const newTodo = await todoService.addTodo({ name: val });
+			this.setState(prevState => ({
+				data: [...prevState.data, newTodo],
+				tempError: null
+			}));
+		} catch (error) {
+			this.setTempError(error.message || 'Failed to add todo');
+		}
+	}
+
+	async removeTodo(id) {
+		try {
+			const result = await todoService.deleteTodo(id);
+			if (result) {
+				this.setState(prevState => ({
+					data: prevState.data.filter(todo => todo.id !== id),
+					tempError: null
+				}));
+			}
+		} catch (error) {
+			console.error('Delete error:', error);
+			this.setTempError(error.message || 'Failed to delete todo');
+			// Refresh the list to ensure UI is in sync with server
+			try {
+				const todos = await todoService.getTodos();
+				this.setState({ data: todos });
+			} catch (refreshError) {
+				console.error('Refresh error:', refreshError);
+			}
 		}
 	}
 
 	render() {
+		const { data, loading, error, tempError } = this.state;
+
+		if (loading) {
+			return <div id="container">Loading...</div>;
+		}
+
+		if (error) {
+			return <div id="container">Error: {error}</div>;
+		}
+
 		return (
 			<div id="container">
 				<Title />
+				{tempError && (
+					<div className="temp-error">
+						{tempError}
+					</div>
+				)}
 				<Form addTodo={this.addTodo} />
-				<List todos={this.state.data} remove={this.removeTodo} />
+				<List todos={data} remove={this.removeTodo} />
 				<Footer />
 			</div>
 		);

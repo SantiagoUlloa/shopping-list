@@ -1,20 +1,21 @@
 import React from 'react';
 import './Todo.css'
-import Icon from '@material-ui/core/Icon';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const Todo = ({todo, remove}) => {
-	// single todo
 	return (
-		<p className="todos">
-			{todo.value}
-			<span
+		<div className="todos">
+			<div className="todo-content">
+				<span className="todo-text">{todo.name}</span>
+			</div>
+			<button
 				className="removeBtn"
-				onClick={()=> {
-					remove(todo.id)
-				}}>
-				<Icon className="delete-icon">delete</Icon>
-			</span>
-		</p>
+				onClick={() => remove(todo.id)}
+				aria-label="Delete item"
+			>
+				<DeleteIcon className="delete-icon" />
+			</button>
+		</div>
 	);
 };
 
