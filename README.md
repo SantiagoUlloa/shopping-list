@@ -1,8 +1,11 @@
 # Cartit
 A shopping list app
 
+## How to run this project locally:
+Clone the project, open it in your favorite IDE. cd into the backend folder and then Shopping-api, then run "docker compose up" in the terminal. Make sure you have docker installed on your computer and running. Also postgreSQL needs to be installed and running. And then cd into the frontend folder and cd into the src folder and run "npm i && npm run start" in the terminal. 
+
 ## Team Members
-Santiago Ulloa (@sulloa13)
+Santiago Ulloa (@SantiagoUlloa)
 
 ## Tech Stack
 * Amazon Web Services
@@ -39,4 +42,5 @@ our users are regular everyday people who go grocery shopping.
 
 * As a User, I want an a grocery list app so that I can add all my  items and remove them once I have those items in my shopping cart.
 * As a guest, I want the ability to use the app without having to log in.
-* As a User, I want an app that I can use before I go grocery shopping where I can save items.  
+* As a User, I want an app that I can use before I go grocery shopping where I can save items.
+
