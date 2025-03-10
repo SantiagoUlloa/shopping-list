@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
+  Redirect
 } from "react-router-dom";
 
 //components
@@ -26,9 +27,9 @@ class App extends Component {
       isLoggedIn: false,
       logInClicked: false,
       registerClicked: false,
-      logoutClicked:false
+      logoutClicked: false,
+      redirectToHome: false
     }
-
   }
 
   submitRegister = (e) => {
@@ -49,11 +50,14 @@ class App extends Component {
         .then(res =>  res.json())
         .then(res => {
           console.log(res, "I got a response!")
+          // Store token in localStorage
+          localStorage.setItem('token', res.token);
           this.setState({
             username: this.state.username,
             password: "",
             token: res.token,
-            isLoggedIn: true
+            isLoggedIn: true,
+            redirectToHome: true
           })
         })
         .catch(error => {
@@ -79,11 +83,14 @@ class App extends Component {
         .then(res =>  res.json())
         .then(res => {
           console.log(res, "I got a response!")
+          // Store token in localStorage
+          localStorage.setItem('token', res.token);
           this.setState({
             username: this.state.username,
             password: "",
             token: res.token,
-            isLoggedIn: true
+            isLoggedIn: true,
+            redirectToHome: true
           })
         })
         .catch(error => {
@@ -107,47 +114,98 @@ class App extends Component {
     }
 
     handleLogout= (e) => {
+      // Clear token from localStorage
+      localStorage.removeItem('token');
       this.setState({
         isLoggedIn: false,
         username: '',
         password: '',
-        token: ''})
+        token: '',
+        redirectToHome: false
+      })
+    }
 
+    componentDidMount() {
+      // Check if user is already logged in
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.setState({
+          isLoggedIn: true,
+          token: token
+        });
+      }
     }
 
 render(){
+  const { isLoggedIn, redirectToHome } = this.state;
+
   return(
-    
     <div className="App" style={{ backgroundImage: `url(${background})`, height:"100vh",
     backgroundPosition:"center", backgroundRepeat:"noRepeat", backgroundSize: "cover" }}>
       <Router>
-      <Link className="home-link" to="/home">Home</Link>
-      <Link className="login-link" to="/login">Login</Link>
-      <Link className="register-link" to="/register">Register</Link>
-      <Route exact path="/home" component={Container} />
-      <Route path="/login" render={(props) => (
-      <Signin {...props} 
-        submitLogin = {this.submitLogin}
-        handleUsernameChange = {this.handleUsernameChange}
-        handlePasswordChange = {this.handlePasswordChange}
-        username = {this.state.username}
-        password = {this.state.password}
-/>)} />
-      <Route path="/register" render={(props) => (
-      <Signup {...props}
-        submitRegister = {this.submitRegister}
-        handleUsernameChange = {this.handleUsernameChange}
-        handlePasswordChange = {this.handlePasswordChange}
-        username = {this.state.username}
-        password = {this.state.password}
-/>)}/>
-      {this.state.isLoggedIn === true ? <Button className="log-out" onClick={this.handleLogout}>Log out</Button> : ''}
-      {this.state.isLoggedIn === true ? <Button> Welcome {this.state.username}</Button>: ''}
-    </Router>
+        <div className="nav-links">
+          <div style={{ marginRight: 'auto' }}>
+            <Link to={isLoggedIn ? "/home" : "/login"} style={{ fontSize: '1.3rem', fontWeight: 'bold' }}>
+              🛒 Cartit
+            </Link>
+          </div>
+          {!isLoggedIn && (
+            <>
+              <Link className="login-link" to="/login">Sign In</Link>
+              <Link className="register-link" to="/register">Sign Up</Link>
+            </>
+          )}
+          {isLoggedIn && (
+            <>
+              <Button className="welcome-msg">
+                👋 Welcome, {this.state.username}
+              </Button>
+              <Button 
+                className="log-out" 
+                variant="contained"
+                onClick={this.handleLogout}
+              >
+                Sign Out
+              </Button>
+            </>
+          )}
+        </div>
+
+        <main className="main-content">
+          {redirectToHome && isLoggedIn && <Redirect to="/home" />}
+
+          <Route exact path="/home" render={props => (
+            isLoggedIn ? <Container {...props} /> : <Redirect to="/login" />
+          )} />
+          
+          <Route path="/login" render={(props) => (
+            isLoggedIn ? 
+            <Redirect to="/home" /> :
+            <Signin {...props} 
+              submitLogin={this.submitLogin}
+              handleUsernameChange={this.handleUsernameChange}
+              handlePasswordChange={this.handlePasswordChange}
+              username={this.state.username}
+              password={this.state.password}
+            />
+          )} />
+
+          <Route path="/register" render={(props) => (
+            isLoggedIn ?
+            <Redirect to="/home" /> :
+            <Signup {...props}
+              submitRegister={this.submitRegister}
+              handleUsernameChange={this.handleUsernameChange}
+              handlePasswordChange={this.handlePasswordChange}
+              username={this.state.username}
+              password={this.state.password}
+            />
+          )}/>
+        </main>
+      </Router>
     </div>
   )
 }
-
 }
 
 export default App;

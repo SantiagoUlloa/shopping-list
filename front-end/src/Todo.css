@@ -1,13 +1,53 @@
 .todos {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  font-size: 20px;
-  width: 300px;
-  border-radius: 10px;
-  padding-left: 5px;
+  background-color: #ffffff;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  font-size: 1.1rem;
+  color: #2c3e50;
 }
 
-.delete-icon {
-  vertical-align: sub;
+.todos:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.todos .delete-icon {
+  color: #e74c3c;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.todos .delete-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Add a checkbox style */
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo-text {
+  margin: 0;
+  flex-grow: 1;
+  text-align: left;
 }

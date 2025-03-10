@@ -1,6 +1,13 @@
 #titleWrapper{
   text-align: center;
+  padding: 20px 0;
 }
 
 .textCenter{
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
 }

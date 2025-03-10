@@ -43,10 +43,13 @@ class Form extends Component {
 					onChange={this.handleChange}
 				/>
 
-				<AddShoppingCartIcon className="add-icon" fontSize="large"
-					onClick={this.handleNewTodoAddition}
-				>
-				</AddShoppingCartIcon>
+				<div className="add-icon-wrapper">
+					<AddShoppingCartIcon 
+						className="add-icon" 
+						style={{ fontSize: '28px' }}
+						onClick={this.handleNewTodoAddition}
+					/>
+				</div>
 			</div>
 		);
 	}

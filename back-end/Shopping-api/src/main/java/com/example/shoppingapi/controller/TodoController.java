@@ -19,10 +19,10 @@ public class TodoController {
     @GetMapping("/todo/list")
     public Iterable<Todo> listAllTodosToUser() { return todoService.listTodos(); }
 
-    @GetMapping("todo/user/list")
+    @GetMapping("/todo/user/list")
     public Iterable<Todo> listOnlyUserTodos() { return todoService.listTodosOfUser(); }
 
-    @DeleteMapping("todo/{todoId}")
+    @DeleteMapping("/todo/{todoId}")
     public ResponseEntity deleteTodoById(@PathVariable Long todoId) {
         return todoService.deleteTodoByIdInDB(todoId);
     }

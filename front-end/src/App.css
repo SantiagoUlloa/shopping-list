@@ -1,8 +1,20 @@
 .App {
-  /* display: block;
-  overflow: auto;
-  margin: 0 auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  min-height: 100vh;
+  position: relative;
+}
+
+.App::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/grocery-cart.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
 }
 
 .App-link {
@@ -14,5 +26,130 @@
 }
 
 .log-out {
-  color: blue;
+  background-color: #e74c3c !important;
+  color: white !important;
+  padding: 6px 16px !important;
+}
+
+.log-out:hover {
+  background-color: #c0392b !important;
+}
+
+/* 
+.home-link {
+  color: white;
+}
+
+.login-link {
+  color: white;
+}
+
+.register-link {
+  color: white;
+} */
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.nav-links a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #3498db;
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.nav-links button {
+  margin-left: 1rem !important;
+  text-transform: none !important;
+  font-size: 1rem !important;
+}
+
+.welcome-msg {
+  color: #2ecc71 !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
+  cursor: default !important;
+}
+
+.main-content {
+  padding-top: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Auth Forms Styling */
+.auth-container {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  padding: 2rem !important;
+  margin-top: 2rem !important;
+}
+
+.auth-container h4 {
+  color: #2c3e50 !important;
+  font-weight: 600 !important;
+  margin-bottom: 2rem !important;
+}
+
+.auth-container .md-form {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.auth-container .btn-cyan {
+  background-color: #3498db !important;
+  box-shadow: 0 2px 4px rgba(52, 152, 219, 0.4) !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  text-transform: none !important;
+}
+
+.auth-container .btn-cyan:hover {
+  background-color: #2980b9 !important;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.6) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .welcome-msg {
+    display: none !important;
+  }
+
+  .main-content {
+    padding-top: 60px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
