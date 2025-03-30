@@ -4,8 +4,10 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Redirect
+  Redirect,
+  Switch
 } from "react-router-dom";
+import ProtectedRoute from './components/ProtectedRoute';
 
 //components
 import Signup from './Signup';
@@ -14,7 +16,6 @@ import Button from '@material-ui/core/Button';
 import './App.css';
 import 'mdbreact/dist/css/mdb.css';
 import background from './assets/grocery-cart.jpg'
-
 
 class App extends Component {
   constructor(props) {
@@ -28,13 +29,25 @@ class App extends Component {
       logInClicked: false,
       registerClicked: false,
       logoutClicked: false,
-      redirectToHome: false
+      redirectToHome: false,
+      authError: null
+    }
+  }
+
+  verifyToken = (token) => {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const expirationTime = payload.exp * 1000;
+      return Date.now() < expirationTime;
+    } catch (error) {
+      console.error('Error verifying token:', error);
+      return false;
     }
   }
 
   submitRegister = (e) => {
-      e.preventDefault(); //stops page refresh
-      console.log('register submission form');
+      e.preventDefault();
+      this.setState({ authError: null });
 
       fetch("http://localhost:8081/signup", {
         method: 'POST',
@@ -47,10 +60,13 @@ class App extends Component {
           password: this.state.password
         })
       })
-        .then(res =>  res.json())
         .then(res => {
-          console.log(res, "I got a response!")
-          // Store token in localStorage
+          if (!res.ok) {
+            throw new Error('Registration failed');
+          }
+          return res.json();
+        })
+        .then(res => {
           localStorage.setItem('token', res.token);
           this.setState({
             username: this.state.username,
@@ -58,16 +74,17 @@ class App extends Component {
             token: res.token,
             isLoggedIn: true,
             redirectToHome: true
-          })
+          });
         })
         .catch(error => {
-          console.log(error);
-        })
+          this.setState({ authError: error.message });
+          console.error('Registration error:', error);
+        });
     }
 
   submitLogin = (e) => {
-      e.preventDefault(); //stops page refresh
-      console.log('login submission form');
+      e.preventDefault();
+      this.setState({ authError: null });
 
       fetch("http://localhost:8081/login", {
         method: 'POST',
@@ -80,10 +97,13 @@ class App extends Component {
           password: this.state.password
         })
       })
-        .then(res =>  res.json())
         .then(res => {
-          console.log(res, "I got a response!")
-          // Store token in localStorage
+          if (!res.ok) {
+            throw new Error('Login failed');
+          }
+          return res.json();
+        })
+        .then(res => {
           localStorage.setItem('token', res.token);
           this.setState({
             username: this.state.username,
@@ -91,16 +111,18 @@ class App extends Component {
             token: res.token,
             isLoggedIn: true,
             redirectToHome: true
-          })
+          });
         })
         .catch(error => {
-          console.log(error);
-        })
+          this.setState({ authError: error.message });
+          console.error('Login error:', error);
+        });
     }
 
     handleUsernameChange = (e) => {
       this.setState({username: e.target.value});
     }
+
     handlePasswordChange = (e) => {
         this.setState({password: e.target.value});
     }
@@ -114,7 +136,6 @@ class App extends Component {
     }
 
     handleLogout= (e) => {
-      // Clear token from localStorage
       localStorage.removeItem('token');
       this.setState({
         isLoggedIn: false,
@@ -122,22 +143,24 @@ class App extends Component {
         password: '',
         token: '',
         redirectToHome: false
-      })
+      });
     }
 
     componentDidMount() {
-      // Check if user is already logged in
       const token = localStorage.getItem('token');
-      if (token) {
+      if (token && this.verifyToken(token)) {
         this.setState({
           isLoggedIn: true,
           token: token
         });
+      } else {
+        // Clear invalid token
+        localStorage.removeItem('token');
       }
     }
 
 render(){
-  const { isLoggedIn, redirectToHome } = this.state;
+  const { isLoggedIn, redirectToHome, authError } = this.state;
 
   return(
     <div className="App" style={{ backgroundImage: `url(${background})`, height:"100vh",
@@ -174,33 +197,39 @@ render(){
         <main className="main-content">
           {redirectToHome && isLoggedIn && <Redirect to="/home" />}
 
-          <Route exact path="/home" render={props => (
-            isLoggedIn ? <Container {...props} /> : <Redirect to="/login" />
-          )} />
-          
-          <Route path="/login" render={(props) => (
-            isLoggedIn ? 
-            <Redirect to="/home" /> :
-            <Signin {...props} 
-              submitLogin={this.submitLogin}
-              handleUsernameChange={this.handleUsernameChange}
-              handlePasswordChange={this.handlePasswordChange}
-              username={this.state.username}
-              password={this.state.password}
-            />
-          )} />
+          <Switch>
+            <Route exact path="/" render={() => (
+              isLoggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />
+            )} />
+            
+            <ProtectedRoute exact path="/home" component={Container} />
+            
+            <Route path="/login" render={(props) => (
+              isLoggedIn ? 
+              <Redirect to="/home" /> :
+              <Signin {...props} 
+                submitLogin={this.submitLogin}
+                handleUsernameChange={this.handleUsernameChange}
+                handlePasswordChange={this.handlePasswordChange}
+                username={this.state.username}
+                password={this.state.password}
+                error={authError}
+              />
+            )} />
 
-          <Route path="/register" render={(props) => (
-            isLoggedIn ?
-            <Redirect to="/home" /> :
-            <Signup {...props}
-              submitRegister={this.submitRegister}
-              handleUsernameChange={this.handleUsernameChange}
-              handlePasswordChange={this.handlePasswordChange}
-              username={this.state.username}
-              password={this.state.password}
-            />
-          )}/>
+            <Route path="/register" render={(props) => (
+              isLoggedIn ?
+              <Redirect to="/home" /> :
+              <Signup {...props}
+                submitRegister={this.submitRegister}
+                handleUsernameChange={this.handleUsernameChange}
+                handlePasswordChange={this.handlePasswordChange}
+                username={this.state.username}
+                password={this.state.password}
+                error={authError}
+              />
+            )}/>
+          </Switch>
         </main>
       </Router>
     </div>
