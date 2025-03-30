@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8081'; // Update this with your actual API base URL
+const API_BASE_URL = 'http://localhost:8081';
 
 export const todoService = {
     async getTodos() {
